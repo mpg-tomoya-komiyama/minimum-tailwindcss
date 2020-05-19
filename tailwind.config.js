@@ -1,8 +1,18 @@
 module.exports = {
   purge: ['./public/**/*.html'],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        // px単位
+        ...[...Array(120)].reduce((m, _, i) => {
+          m[`${i}px`] = `${i}px`
+          return m
+        }, {}),
+      },
+    },
   },
-  variants: {},
+  variants: {
+    margin: ['responsive', 'first', 'last'],
+  },
   plugins: [],
 }

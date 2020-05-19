@@ -1,31 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
     <title></title>
   </head>
-  <body>
-    <h2 class="mb-2 px-2 text-xl">New Todo</h2>
-    <form class="mb-4 px-4">
-      <input type="text" class="p-2 border" />
-      <button class="ml-2 p-2 rounded text-white bg-blue-500">submit</button>
-    </form>
-    <h2 class="mb-2 px-2 text-xl">List Todo</h2>
-    <ul class="py-2 px-4">
-      <li class="p-2 border">
-        <p class="border-b">todo 1</p>
-        <p class="text-sm">2020 05/12</p>
-      </li>
-      <li class="mt-2 p-2 border">
-        <p class="border-b">todo 2</p>
-        <p class="text-sm">2020 05/12</p>
-      </li>
-      <li class="mt-2 p-2 border">
-        <p class="border-b">todo 3</p>
-        <p class="text-sm">2020 05/12</p>
-      </li>
-    </ul>
+  <body class="p-2">
+    <script type="module">
+      import { h, Component, render } from "https://unpkg.com/preact?module";
+
+      const li = i => h(
+        'li',
+        { class: 'mt-2 p-2 border border-red-500 first:mt-0' },
+        [
+          h('p', { class: 'border-b' }, `todo ${i}`),
+          h('p', { class: 'text-sm' }, '2020 05/12'),
+        ]
+      )
+
+      const app = h('div', null, [
+        h('ul', { class: 'py-2 px-4 border border-red-500' }, [1, 2, 3].map(i => li(i)))
+      ]);
+
+      render(app, document.body);
+    </script>
   </body>
 </html>
